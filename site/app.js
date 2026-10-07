@@ -33,7 +33,7 @@
     $('#previous').disabled=index===0 || busy;$('#next').disabled=index===10 || busy;
   }
   function render(){
-    const scene=scenes[index];$('#eyebrow').textContent=scene.label;
+    const scene=scenes[index];stage.dataset.image=scene.image;$('#eyebrow').textContent=scene.label;
     const copy=document.createElement('div');copy.id='scene-copy';copy.className=`scene-copy ${scene.style}`;
     const heading=document.createElement(index===0?'h1':'h2');
     scene.title.split('|').forEach((line,i)=>{if(i && index!==0)heading.append(document.createElement('br'));const span=document.createElement('span');span.textContent=line;heading.append(span);});
