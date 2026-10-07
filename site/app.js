@@ -44,14 +44,30 @@
     $('#scene-number').textContent=String(index+1).padStart(2,'0');$('#final-cta').hidden=index!==10;
     buttons.forEach((b,i)=>{b.className=i<index?'past':i===index?'current':'';b.style.setProperty('--progress','0');if(i===index)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});controls();
   }
+  function finishPhotoFade(image){
+    if(reduced.matches)return Promise.resolve();
+    return new Promise(resolve=>{
+      const finish=()=>{clearTimeout(timeout);image.removeEventListener('transitionend',onEnd);resolve();};
+      const onEnd=event=>{if(event.target===image && event.propertyName==='opacity')finish();};
+      const timeout=setTimeout(finish,2000);
+      image.addEventListener('transitionend',onEnd);
+    });
+  }
   async function go(target){
     if(busy || target<0 || target>=scenes.length)return;
     busy=true;controls();const nextImage=images[1-active];
     const waitNotice=setTimeout(()=>{$('#load-message').textContent='다음 사진을 불러오고 있습니다…';$('#load-message').hidden=false;},1200);
     try{
       nextImage.removeAttribute('srcset');nextImage.src=path(scenes[target]);await nextImage.decode();
-      images[active].classList.remove('active');nextImage.classList.add('active');active=1-active;index=target;elapsed=0;warmed=-1;render();
+      clearTimeout(waitNotice);
+      const outgoing=images[active];
+      nextImage.dataset.image=scenes[target].image;
+      // Keep the outgoing zoom until its opacity transition is completely hidden.
+      const fading=finishPhotoFade(outgoing);
+      outgoing.classList.remove('active');nextImage.classList.add('active','drifting');active=1-active;index=target;elapsed=0;warmed=-1;render();
       $('#load-message').hidden=true;
+      await fading;
+      outgoing.classList.remove('drifting');
     }catch{paused=true;$('#load-message').textContent='사진을 불러오지 못했습니다. 연결을 확인하고 장면을 다시 선택해주세요.';$('#load-message').hidden=false;}
     finally{clearTimeout(waitNotice);busy=false;controls();}
   }
