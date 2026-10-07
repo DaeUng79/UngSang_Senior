@@ -41,3 +41,5 @@
 }
 
 @media(max-width:899px){.photograph[data-image="2"]{height:92%}}
+
+.masthead a.text-button{text-decoration:none}
