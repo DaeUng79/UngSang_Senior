@@ -6,3 +6,6 @@
 
 .masthead>span{margin-left:auto}.home-link{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-size:12px;white-space:nowrap;color:var(--muted)}.home-link:hover{color:var(--ink)}
 @media(max-width:680px){.masthead>span{display:none}.home-link{margin-left:auto}}
+
+.foundation-logo{display:block;width:230px;height:auto}.footer-logo{width:200px}footer address{align-self:center}
+@media(max-width:680px){.foundation-logo{width:185px}.footer-logo{width:180px}footer address{align-self:flex-start}}
