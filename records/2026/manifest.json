@@ -1,0 +1,170 @@
+[
+  {
+    "page": 1,
+    "file": "archive_page01_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "마을 나무의 밑동 위치를 맞춘 기존 샘플. 원본 인물과 나무를 보존하고 부족한 주변 풍경을 AI로 확장했습니다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1070,
+      1000
+    ],
+    "frames": 150,
+    "bytes": 1612999
+  },
+  {
+    "page": 2,
+    "file": "archive_page02_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "학교 운동장. 과거의 학교 상부와 인물 하단은 추정 복원을 피한다. 두 시점의 건물 형태가 달라 정확한 구조물 정합은 하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      828
+    ],
+    "frames": 150,
+    "bytes": 1024210
+  },
+  {
+    "page": 3,
+    "file": "archive_page03_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "학교 운동장. 기존 교사 창문·층수와 사람을 보존한다. 추가 학교 동이나 상층을 만들지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      960
+    ],
+    "frames": 150,
+    "bytes": 990846
+  },
+  {
+    "page": 4,
+    "file": "archive_page04_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "옛 담장과 현재 골목. 담장·컨테이너·학교의 변화 자체를 보존하고 과거에 현재 시설을 만들지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      822
+    ],
+    "frames": 150,
+    "bytes": 1080303
+  },
+  {
+    "page": 5,
+    "file": "archive_page05_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "산 능선과 논. 능선 높이를 근사하게 맞추되 현재 아파트를 과거에 추가하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      960
+    ],
+    "frames": 150,
+    "bytes": 1095122
+  },
+  {
+    "page": 6,
+    "file": "archive_page06_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "아파트 주변. 촬영 방향이 크게 달라 건물끼리 강제 정합하지 않는다. 원래 건물 동수·층수 보존.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      828
+    ],
+    "frames": 150,
+    "bytes": 907318
+  },
+  {
+    "page": 7,
+    "file": "archive_page07_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "나무와 난간이 있는 길. 난간 높이와 인물 위치를 근사 정렬한다. 현재 건물을 과거 숲에 추가하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      960
+    ],
+    "frames": 150,
+    "bytes": 1939942
+  },
+  {
+    "page": 8,
+    "file": "archive_page08_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "초가집과 현재 마을. 직접 일치하는 구조물이 부족하므로 원래 구도를 유지한다. 원본의 초가집 외에 집을 추가하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      960
+    ],
+    "frames": 150,
+    "bytes": 985369
+  },
+  {
+    "page": 9,
+    "file": "archive_page09_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "옛 마을 전경과 현재 도시. 촬영 위치가 달라 산세·도로를 임의로 동일화하지 않는다. 과거 마을에 현대 도시를 생성하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      840
+    ],
+    "frames": 150,
+    "bytes": 1570416
+  },
+  {
+    "page": 10,
+    "file": "archive_page10_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "옛 공사 현장과 현재 도로. 불명확한 과거 건물 형태를 완성하거나 현재 아파트·송전탑을 옛 사진에 추가하지 않는다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      828
+    ],
+    "frames": 150,
+    "bytes": 1128879
+  },
+  {
+    "page": 11,
+    "file": "archive_page11_5s.mp4",
+    "mode": "original-full-frame",
+    "note": "눈밭과 현재 골목. 현재 도로·벽·수목을 과거 눈밭에 복원하지 않는다. 원본 공장 형태·사람을 보존한다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      828
+    ],
+    "frames": 150,
+    "bytes": 1511661
+  },
+  {
+    "page": 12,
+    "file": "archive_page12_5s.mp4",
+    "mode": "limited-outpainting",
+    "note": "과거 눈놀이 장소와 현재 들판. 촬영 구도가 달라 원래 풍경을 그대로 비교한다. 과거는 하단 눈, 현재는 상단 하늘만 확장한다.",
+    "duration": 5.0,
+    "fps": 30.0,
+    "size": [
+      1152,
+      960
+    ],
+    "frames": 150,
+    "bytes": 993760
+  }
+]
