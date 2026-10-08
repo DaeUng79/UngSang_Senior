@@ -1,14 +1,14 @@
 (() => {
   const scenes = [
     { image:1, label:'프롤로그 · 우리의 동네, 웅상', style:'intro', title:'웅상을|기억하는|방법', body:'웅상을 기록하다.\n시간을 건너, 당신에게.', caption:'사진 속에 남아 있는, 우리의 어린 날', seconds:8 },
-    { image:2, label:'01 · 한 장의 시작', style:'emphasis', title:'오래된 사진 한 장이|우리 동네의|역사가 됩니다.', body:'빛바랜 앨범 속에 잠들어 있던\n웅상의 옛 모습을', caption:'함께였기에, 오래 기억되는 순간', seconds:9 },
+    { image:2, copyPosition:'bottom-left', label:'01 · 한 장의 시작', style:'emphasis', title:'오래된 사진 한 장이|우리 동네의|역사가 됩니다.', body:'빛바랜 앨범 속에 잠들어 있던\n웅상의 옛 모습을', caption:'함께였기에, 오래 기억되는 순간', seconds:9 },
     { image:3, label:'02 · 다시 꺼내는 기억', style:'rise', title:'이웃의 사진을 모아|다시 꺼내어봅니다.', body:'선배시민들이 지인과 이웃의\n사진을 모으고 이야기를 엮어', caption:'우리의 여름은, 이런 모습이었습니다', seconds:9 },
-    { image:4, label:'03 · 그 시절, 그 자리', style:'rise', title:'그 시절 그 자리를|다시 찾아가', body:'현재의 모습을 담아 완성한\n‘과거와 현재의 기록’입니다.', caption:'여럿의 손길로 만들어온 동네', seconds:8 },
+    { image:4, copyPosition:'top-right', label:'03 · 그 시절, 그 자리', style:'rise', title:'그 시절 그 자리를|다시 찾아가', body:'현재의 모습을 담아 완성한\n‘과거와 현재의 기록’입니다.', caption:'여럿의 손길로 만들어온 동네', seconds:8 },
     { image:5, label:'04 · 변해가는 풍경', style:'emphasis', title:'논 밭이|아파트가 되고,', body:'', caption:'시간이 흐르고, 풍경이 바뀌어도', seconds:7 },
     { image:9, label:'05 · 남아 있는 풍경', style:'rise', title:'초가집이|주택이 되기까지', body:'', caption:'이제는 사진으로 만나는 그때의 집', seconds:7 },
     { image:6, label:'06 · 시간을 걷다', style:'rise', title:'조용하고 천천히,|그러나 끊임없이', body:'웅상은 변해왔습니다.', caption:'우리가 함께 지나온 시간', seconds:8 },
     { image:10, label:'07 · 어제와 오늘 사이', style:'memory', title:'선배시민이 엮은|사진과 이야기를 따라', body:'이웃의 기억이\n마을의 기록으로 이어집니다.', caption:'익숙한 나무 아래, 남아 있는 어린 날', seconds:9 },
-    { image:7, label:'08 · 우리의 길 위에', style:'memory', title:'우리가 오늘 걷는|이 길 위에도,', body:'누군가의 어린 시절과\n젊은 날이 남아있습니다.', caption:'한 장에 담긴, 나란히 앉았던 기억', seconds:9 },
+    { image:7, copyPosition:'bottom-left', label:'08 · 우리의 길 위에', style:'memory', title:'우리가 오늘 걷는|이 길 위에도,', body:'누군가의 어린 시절과\n젊은 날이 남아있습니다.', caption:'한 장에 담긴, 나란히 앉았던 기억', seconds:9 },
     { image:11, label:'09 · 당신에게 묻습니다', style:'emphasis', title:'당신의 앨범에는|어떤 웅상이|남아 있나요?', body:'', caption:'평범해서 더 소중한, 어느 겨울날', seconds:8 },
     { image:8, label:'에필로그 · 다음 이야기는 당신의 기억', style:'invitation', title:'당신의 기억도|들려주세요.', body:'그 이야기가 다음\n웅상의 역사가 됩니다.', caption:'기억은, 함께 나눌 때 이어집니다', seconds:10 }
   ];
@@ -33,7 +33,7 @@
     $('#previous').disabled=index===0 || busy;$('#next').disabled=index===10 || busy;
   }
   function render(){
-    const scene=scenes[index];stage.dataset.image=scene.image;$('#eyebrow').textContent=scene.label;
+    const scene=scenes[index];stage.dataset.image=scene.image;stage.dataset.copyPosition=scene.copyPosition || '';$('#eyebrow').textContent=scene.label;
     const copy=document.createElement('div');copy.id='scene-copy';copy.className=`scene-copy ${scene.style}`;
     const heading=document.createElement(index===0?'h1':'h2');
     scene.title.split('|').forEach((line,i)=>{if(i && index!==0)heading.append(document.createElement('br'));const span=document.createElement('span');span.textContent=line;heading.append(span);});
