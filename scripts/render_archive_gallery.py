@@ -40,7 +40,7 @@ def render(root, records):
     creators = list(dict.fromkeys(works[r['page']]['creator'] for r in records))
     esc = html.escape
     buttons = '<button type="button" class="selected" data-creator="all" aria-pressed="true">모든 기록</button>'
-    buttons += ''.join(f'<button type="button" data-creator="{esc(name)}" aria-pressed="false">{esc(name)}</button>' for name in creators)
+    buttons += ''.join(f'<button type="button" data-creator="{esc(name)}" aria-pressed="false">{esc(name)} 님</button>' for name in creators)
     cards = []
     for record in records:
         p = record['page']
@@ -56,7 +56,7 @@ def render(root, records):
             </section>''')
         figure = motion_figure(work, record, overlays[str(p)])
         cards.append(f'''<article class="archive-work" id="page{p:02d}" data-creator="{creator}" aria-labelledby="title{p:02d}">
-          <header class="work-heading"><p class="creator"><span>사진 수집 · 이야기 구성</span><strong>{creator}</strong></p>
+          <header class="work-heading"><p class="creator"><span>사진 수집 · 이야기 구성</span><strong>{creator} 님</strong></p>
             <h2 id="title{p:02d}">{title}</h2></header>
           <div class="work-body">{figure}<div class="memories">{''.join(stories)}</div></div>
         </article>''')
