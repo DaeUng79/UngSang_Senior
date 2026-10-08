@@ -50,14 +50,11 @@
 @media(max-width:899px){.identity.foundation-brand{padding:5px 8px}.foundation-logo{width:150px}}
 
 
-/* Keep the requested copy placement attached to its story scene. */
-.exhibit[data-copy-position="bottom-left"] .narrative{left:5%;right:auto;top:auto;bottom:max(220px,calc(190px + env(safe-area-inset-bottom)));width:42%;max-width:620px;text-align:left;text-shadow:0 2px 14px #101b1780}
-.exhibit[data-copy-position="bottom-left"] .scene-body{margin-left:0;margin-right:auto}
-.exhibit[data-copy-position="top-right"] .narrative{left:auto;right:5%;top:max(195px,22%);bottom:auto;text-align:right}
-.exhibit[data-copy-position="top-right"] .desktop-note{top:135px}
+/* Scene-specific placement applies only to the mobile layout. */
 @media(max-width:899px){
-  .exhibit[data-copy-position="bottom-left"] .narrative{left:24px;right:auto;top:auto;bottom:max(194px,calc(170px + env(safe-area-inset-bottom)));width:76%;max-width:360px}
-  .exhibit[data-copy-position="top-right"] .narrative{left:auto;right:24px;top:max(112px,calc(94px + env(safe-area-inset-top)));bottom:auto}
+  .exhibit[data-copy-position="bottom-left"] .narrative{left:24px;right:auto;top:auto;bottom:max(194px,calc(170px + env(safe-area-inset-bottom)));width:76%;max-width:360px;text-align:left;text-shadow:0 2px 14px #101b1780}
+  .exhibit[data-copy-position="bottom-left"] .scene-body{margin-left:0;margin-right:auto}
+  .exhibit[data-copy-position="top-right"] .narrative{left:auto;right:24px;top:max(112px,calc(94px + env(safe-area-inset-top)));bottom:auto;text-align:right}
 }
 @media(max-width:360px){
   .exhibit[data-copy-position="bottom-left"] .narrative{left:20px;bottom:max(184px,calc(160px + env(safe-area-inset-bottom)))}
