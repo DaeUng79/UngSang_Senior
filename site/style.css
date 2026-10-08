@@ -47,8 +47,8 @@
 /* Transparent welfare center mark over the photographs. */
 .identity.foundation-brand{padding:7px 11px;background:transparent;border-radius:0;box-shadow:none}
 .foundation-logo{display:block;width:210px;height:auto}
-/* Outline follows the transparent tree and lettering, keeping the photo visible. */
-.foundation-brand .foundation-logo{filter:drop-shadow(.6px 0 0 #fffdf5) drop-shadow(-.6px 0 0 #fffdf5) drop-shadow(0 .6px 0 #fffdf5) drop-shadow(0 -.6px 0 #fffdf5) drop-shadow(0 2px 3px #101b1799)}
+/* A faint halo gently separates the transparent logo from the photo. */
+.foundation-brand .foundation-logo{filter:drop-shadow(0 0 .6px #fffdf559) drop-shadow(0 1px 2px #101b1740)}
 @media(max-width:899px){.identity.foundation-brand{padding:5px 8px}.foundation-logo{width:150px}}
 
 
