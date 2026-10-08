@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import shutil
 from render_archive_gallery import render
+from prepare_archive_font import archive_font
 
 root = Path(__file__).resolve().parents[1]
 source = root/'output/video/pages-02-12'
@@ -11,6 +12,7 @@ target.mkdir(parents=True,exist_ok=True)
 records = json.loads((source/'manifest.json').read_text())
 render(root,records)
 files = [source/name for name in ('index.html','archive.css','archive.js','motion-sample.css','motion-sample.js','welfare-logo.webp')]
+files += [source/archive_font(root)['file'], source/'SERIF-LICENSE.txt']
 files += list(source.glob('motion*.webp'))
 files += [source/record['file'] for record in records]
 for file in files:

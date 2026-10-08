@@ -65,6 +65,7 @@ tmp/                      판독 이미지·비교 화면·로그 (정리 대상
 | 사진 위 발췌 글·위치 | `scripts/motion_overlays.json` | 전시 생성 |
 | 전시 머리말·로고·문의처·하단 | `scripts/archive_gallery.html`, `scripts/archive.css` | 전시 생성 |
 | 움직이는 사진 효과 | `scripts/motion-sample.css`, `scripts/motion-sample.js` | 전시 생성 |
+| 전시 명조 웹폰트·새 글자 추가 | `scripts/prepare_archive_font.py`, `site/assets/fonts/archive-serif.json` | 글꼴 준비 후 전시 생성 |
 | 작품 순서·영상 파일·화면 크기 | `output/video/pages-02-12/manifest.json` | 전시 생성 |
 
 `site/archive/index.html`은 생성 결과입니다. 이 파일만 고치면 다음 생성 때 수정이 사라집니다. `pages-02-12`는 초기 작업 때 정한 이름이며 현재는 **1~12페이지 모두** 들어 있습니다.
@@ -95,6 +96,6 @@ python3 scripts/build_public_archive.py
 
 - 첫 화면 사진 11장과 전시 작품 12건은 다른 구성입니다. 같은 번호를 동일 작품으로 가정하지 않습니다.
 - 전시는 두 WebP 사진과 HTML 글을 과거→현재 5초, 현재→과거 5초로 왕복 전환합니다. 다운로드 MP4는 각 5초입니다.
-- 첫 화면은 Noto Sans KR·Nanum Brush Script의 일부 글자만 포함한 글꼴을 사용합니다. 새 글자가 필요하면 원본 글꼴과 라이선스를 확보해 다시 준비합니다. 전시는 시스템 글꼴입니다.
+- 첫 화면은 Noto Sans KR·Nanum Brush Script, 전시 제목·서정 문구·작품 설명은 Noto Serif KR 기반 웹폰트를 사용합니다. 웹폰트는 현재 쓰는 글자만 포함합니다. 새 글자가 추가되면 원본 글꼴로 다시 준비합니다. 전시 생성기는 명조 웹폰트의 글자 누락을 확인해, 누락 시 재생성을 안내하고 중단합니다. 안내·버튼용 고딕은 시스템 글꼴입니다.
 - 일부 사진 가장자리는 AI 편집을 거쳤습니다. 원본·편집본·생성 기록을 구분하고 확인되지 않은 과거 건물·사물을 만들어 기록으로 취급하지 않습니다.
 - 사업계획·예산·성과·동의 여부는 웹사이트 파일만으로 확정할 수 없습니다. 기본 문서 대장에서 확인 상태를 따로 관리합니다.

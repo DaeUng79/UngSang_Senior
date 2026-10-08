@@ -56,6 +56,7 @@ shutil.copytree(root / 'scripts', stage / 'scripts',
 (stage / 'site/assets/brand').mkdir(parents=True)
 shutil.copy2(root / 'site/assets/brand/welfare-logo.webp',
              stage / 'site/assets/brand/welfare-logo.webp')
+shutil.copytree(root / 'site/assets/fonts', stage / 'site/assets/fonts')
 (stage / 'output/video/pages-02-12').mkdir(parents=True)
 print(stage)
 PY
@@ -146,6 +147,14 @@ motion01-end-640.webp     현재 모바일 사진
 ## 5. 새 연도 전시를 생성하고 연결합니다
 
 먼저 작업 사본의 `archive_gallery.html`에서 제목·연도·소개글·연락처를 고칩니다. `render_archive_gallery.py`가 쓰는 `archive-text.md`의 고정 출처 문구도 새 원본 명칭에 맞춥니다. 첫 작품만 큰 글씨를 사용하는 현행 `page != 1` 규칙도 새 구성에 맞는지 확인합니다.
+
+확정 문구에 맞춰 전시 명조 웹폰트를 준비합니다. Noto Serif KR 원본 TTF는 기관 보존본 또는 [공식 글꼴 저장소](https://github.com/google/fonts/tree/main/ofl/notoserifkr)에서 확보합니다. 예시의 원본 경로는 현재 로컬에 보관한 위치이며 GitHub 사본에는 포함하지 않습니다. Python 환경에 `fonttools`와 `brotli`가 필요합니다.
+
+```sh
+python3 work/2027/scripts/prepare_archive_font.py --source output/fonts/NotoSerifKR-wght.ttf
+```
+
+새 작업 사본의 데이터·템플릿에서 글자를 모아 WOFF2를 만듭니다. 글꼴 파일명에는 내용 해시가 붙어 캐시가 자동 구분되며, 라이선스와 함께 전시 폴더에 복사됩니다. 처음에는 복사한 2026년 글꼴이 들어 있으므로 새 연도 문구가 확정된 뒤 위 명령을 실행합니다.
 
 ```sh
 python3 work/2027/scripts/build_public_archive.py
@@ -245,3 +254,5 @@ PY
 `scripts/motion_overlays.json`은 저장소의 현재 편집 원본입니다. `records/2026/motion_overlays.json`은 기준 사본이므로 편집 중인 파일 위에 자동으로 덮어쓰지 않습니다.
 
 수정·생성·확인 후에는 세 데이터의 기준 사본, 작품 대장과 배포 기록도 함께 갱신합니다. 이 복원은 원본 사진·AI 생성 원본·최종 PNG 프레임을 복구하지 않습니다. 사진을 다시 편집하려면 로컬 보존 자료가 필요합니다.
+
+새 글자를 넣어 생성기가 ‘전시 웹폰트에 새 글자가 필요합니다’라고 안내하면 원본 TTF를 확보하고 `python3 scripts/prepare_archive_font.py --source output/fonts/NotoSerifKR-wght.ttf`를 실행한 뒤 다시 전시를 생성합니다. 새 WOFF2와 `archive-serif.json`도 GitHub에 함께 반영합니다. 기존 글자를 그대로 사용하는 배치 수정은 글꼴 재생성 없이 가능합니다.

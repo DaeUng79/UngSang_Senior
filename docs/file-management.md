@@ -20,6 +20,8 @@
 | `scripts/motion-sample.css`, `motion-sample.js` | 전체 12작품의 사진·글 전환 | 이름이 sample이어도 현재 운영 필수 |
 | `scripts/motion_overlays.json` | 발췌 문구·사진 위 글 위치 | 작품 변경 때 수정 |
 | `scripts/prepare_motion_photos.py` | 최종 PNG→반응형 WebP | 사진 변경 때 사용 |
+| `scripts/prepare_archive_font.py` | 현재 전시 문구→명조 WOFF2·글자 목록 | 새로운 글자가 추가될 때 사용 |
+| `site/assets/fonts/archive-serif.json`, `archive-serif-*.woff2`, `SERIF-LICENSE.txt` | 명조 웹폰트·포함 글자·라이선스 | 함께 버전 관리, 전시 생성 시 자동 복사 |
 | `scripts/prepare_assets.py` | 첫 화면 사진·부분 글꼴 제작 | 첫 화면 자산 변경 때 사용, 환경 확인 필요 |
 | `.github/workflows/pages.yml` | main의 site/ 배포 | 유지 |
 | `README.md`, `docs/`, `records/` | 인수인계·기준 데이터 | GitHub 보관, Pages 배포 대상 아님 |
@@ -40,6 +42,7 @@
 | `output/video/generation-02-12.json`, `batch-02-12-alignment.json`, `pages-02-12-sources.json` | 생성·정렬·원본 연결 기록 | 기관 보존, 로컬 절대경로 포함 가능 |
 | `output/video/page01/outpainted/README.md` | 1페이지 제작 정보·프롬프트 | 기관 보존 |
 | `output/branding/` | 로고 투명 PNG·출처·편집 프롬프트 | 기관 보존 |
+| `output/fonts/NotoSerifKR-wght.ttf` | 새 문구의 명조 웹폰트를 만들 원본 | 기관 보존, 원본 출처·해시는 archive-serif.json 참조 |
 | `output/video/ungsang_pages_01-12_5s.zip` | 12작품 묶음 전달본 | 버전을 표시해 보관 |
 
 기존 ZIP은 생성 시점의 묶음이며, 이후 수정한 사이트 로고·CSS 등이 자동 반영되지 않습니다. ‘항상 최신 사이트 백업’으로 간주하지 않습니다. 현재 웹 상태는 `site/`와 Git 커밋으로 보존합니다.
@@ -81,6 +84,7 @@
 | PNG→WebP·MP4 제작 | Python, `imageio-ffmpeg` 및 FFmpeg 실행 환경 |
 | PDF 사진 추출·일부 합성 계산 | `pypdf`, `Pillow` |
 | 첫 화면 사진·글꼴 제작 | `Pillow`, `fonttools`, 원본 TTF |
+| 전시 명조 웹폰트 제작 | `fonttools`, `brotli`, Noto Serif KR 원본 TTF |
 | AI 편집 | 이미지 편집 도구와 별도로 보존한 입력·프롬프트 |
 
 제작 스크립트는 임시 패키지 경로 `/private/tmp/ungsang-video-tools`를 우선 참조하지만 일반 Python 환경의 `imageio_ffmpeg`도 불러올 수 있습니다. 새 환경에서는 가상환경에 해당 패키지를 설치해 사용합니다. 임시 폴더 자체를 백업 환경으로 삼지 않습니다.
@@ -88,6 +92,8 @@
 `prepare_assets.py`는 `/private/tmp/ungsang-sans.ttf`, `/private/tmp/ungsang-brush.ttf`를 고정 참조합니다. 사진 11장을 먼저 덮어쓴 다음 글꼴을 만들기 때문에, **글꼴 준비 여부를 확인하기 전에 실행하지 않습니다.** 현재 WOFF와 라이선스는 `site/assets/fonts/`에 있습니다. 새 원본 글꼴을 확보한 경우 경로를 수정한 작업 사본에서 사용합니다.
 
 `build_public_archive.py`는 대상 폴더에서 오래된 파일을 지우지 않습니다. 작품 수가 줄거나 파일명이 달라지면 참조되지 않는 공개 자산을 별도로 검토합니다. 연도별 하위 전시 폴더는 보존합니다.
+
+전시 글꼴은 같은 사이트에서 제공하므로 방문자 PC에 설치할 필요가 없습니다. 운영체제별 기본 명조체 차이를 줄이기 위한 조치입니다. 파일 보존 목록 `docs/2026/files.csv`는 웹폰트 추가 전 작성된 시점의 목록이며, 추가 파일은 위 표와 Git 이력으로 관리합니다.
 
 ## 5. 보관·공개 원칙
 

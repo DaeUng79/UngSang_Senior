@@ -4,6 +4,7 @@ import html
 import json
 import shutil
 import re
+from prepare_archive_font import archive_font
 
 def motion_figure(work, record, overlay):
     esc = html.escape
@@ -31,6 +32,7 @@ def motion_figure(work, record, overlay):
     </figure>'''
 
 def render(root, records):
+    font = archive_font(root)
     out = root/'output/video/pages-02-12'
     content = json.loads((root/'output/video/archive-content.json').read_text())
     works = {work['page']: work for work in content['works']}
@@ -59,9 +61,13 @@ def render(root, records):
           <div class="work-body">{figure}<div class="memories">{''.join(stories)}</div></div>
         </article>''')
     template = (root/'scripts/archive_gallery.html').read_text()
-    (out/'index.html').write_text(template.replace('{{CREATOR_BUTTONS}}', buttons).replace('{{WORKS}}', '\n'.join(cards)).replace('{{HOME_URL}}','https://daeung79.github.io/UngSang_Senior/'))
+    (out/'index.html').write_text(template.replace('{{CREATOR_BUTTONS}}', buttons).replace('{{WORKS}}', '\n'.join(cards)).replace('{{HOME_URL}}','https://daeung79.github.io/UngSang_Senior/').replace('{{ARCHIVE_SERIF_URL}}', font['file']).replace('{{ARCHIVE_FONT_VERSION}}', font['sha256'][:12]))
     for name in ('archive.css','archive.js','motion-sample.css','motion-sample.js'):
         shutil.copy2(root/'scripts'/name, out/name)
+    css = out/'archive.css'
+    css.write_text(css.read_text().replace('{{ARCHIVE_SERIF_URL}}', font['file']))
+    for name in (font['file'], 'SERIF-LICENSE.txt'):
+        shutil.copy2(root/'site/assets/fonts'/name, out/name)
     shutil.copy2(root/'site/assets/brand/welfare-logo.webp',out/'welfare-logo.webp')
     shutil.copy2(root/'output/video/archive-content.json', out/'archive-content.json')
 
