@@ -10,3 +10,5 @@
 
 .foundation-logo{display:block;width:230px;height:auto}.footer-logo{width:200px;margin-inline:auto}footer{flex-direction:column;align-items:center;gap:16px;text-align:center}footer address{align-self:center;text-align:center}
 @media(max-width:680px){.foundation-logo{width:185px}.footer-logo{width:180px}}
+
+.collection-heading h2{word-break:keep-all;line-height:1.5}.collection-heading>p{max-width:300px;word-break:keep-all}

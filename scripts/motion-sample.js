@@ -6,7 +6,7 @@
     state.photo.classList.toggle('is-playing', playing);
     if (!state.ready) return;
     state.button.textContent = playing ? '잠시 머물러 읽기 Ⅱ' : '움직이는 사진 보기 ▷';
-    state.button.setAttribute('aria-label', `${state.creator}의 사진과 글 ${playing ? '일시정지' : '재생'}`);
+    state.button.setAttribute('aria-label', `${state.creator} 님이 엮은 사진과 이야기 ${playing ? '일시정지' : '재생'}`);
   }
   async function loadPhotos(state) {
     if (state.ready || state.loading) return;

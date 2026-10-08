@@ -12,7 +12,7 @@
       button.classList.toggle('selected', selected);
       button.setAttribute('aria-pressed', String(selected));
     }
-    status.textContent = creator === 'all' ? '모든 크리에이터의 기억을 펼칩니다.' : `${creator} 님의 기억을 펼칩니다.`;
+    status.textContent = creator === 'all' ? '이웃의 사진과 이야기로 엮은 웅상의 기록을 펼칩니다.' : `${creator} 님이 모으고 엮은 기록을 펼칩니다.`;
   };
   buttons.forEach(button => button.addEventListener('click', () => {
     choose(button.dataset.creator);

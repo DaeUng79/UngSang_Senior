@@ -21,7 +21,7 @@ def motion_figure(work, record, overlay):
         captions.append(f'''<div class="motion-caption caption-{phase}" aria-hidden="true"><p class="motion-year">{year}</p><p class="motion-place">{place}</p><p class="motion-quote">{quote}</p></div>''')
     sizes = '(max-width:680px) calc(100vw - 40px), (max-width:1200px) 50vw, 608px'
     return f'''<figure class="motion-figure">
-      <div class="motion-photo {esc(overlay['anchor'])}{compact}{narrow}" style="--photo-aspect:{width}/{height}" role="img" aria-label="{esc(work['creator'])}의 기억. {esc(work['before']['date'])}의 사진과 {esc(work['after']['date'])}의 사진, 그리고 이야기가 천천히 교차합니다.">
+      <div class="motion-photo {esc(overlay['anchor'])}{compact}{narrow}" style="--photo-aspect:{width}/{height}" role="img" aria-label="{esc(work['creator'])} 님이 엮은 웅상의 기록. {esc(work['before']['date'])}의 사진과 {esc(work['after']['date'])}의 사진, 그리고 이야기가 천천히 교차합니다.">
         <img class="motion-past" src="motion{page:02d}-start-640.webp" srcset="motion{page:02d}-start-640.webp 640w, motion{page:02d}-start.webp {width}w" sizes="{sizes}" width="{width}" height="{height}" alt="" loading="lazy" decoding="async">
         <img class="motion-present" data-src="motion{page:02d}-end-640.webp" data-srcset="motion{page:02d}-end-640.webp 640w, motion{page:02d}-end.webp {width}w" sizes="{sizes}" width="{width}" height="{height}" alt="" decoding="async">
         <div class="motion-shade" aria-hidden="true"></div>{''.join(captions)}
@@ -39,7 +39,7 @@ def render(root, records):
     overlays = json.loads((root/'scripts/motion_overlays.json').read_text())
     creators = list(dict.fromkeys(works[r['page']]['creator'] for r in records))
     esc = html.escape
-    buttons = '<button type="button" class="selected" data-creator="all" aria-pressed="true">모든 기억</button>'
+    buttons = '<button type="button" class="selected" data-creator="all" aria-pressed="true">모든 기록</button>'
     buttons += ''.join(f'<button type="button" data-creator="{esc(name)}" aria-pressed="false">{esc(name)}</button>' for name in creators)
     cards = []
     for record in records:
@@ -56,7 +56,7 @@ def render(root, records):
             </section>''')
         figure = motion_figure(work, record, overlays[str(p)])
         cards.append(f'''<article class="archive-work" id="page{p:02d}" data-creator="{creator}" aria-labelledby="title{p:02d}">
-          <header class="work-heading"><p class="creator"><span>웅상아카이빙크리에이터</span><strong>{creator}</strong></p>
+          <header class="work-heading"><p class="creator"><span>사진 수집 · 이야기 구성</span><strong>{creator}</strong></p>
             <h2 id="title{p:02d}">{title}</h2></header>
           <div class="work-body">{figure}<div class="memories">{''.join(stories)}</div></div>
         </article>''')
@@ -72,7 +72,7 @@ def render(root, records):
     shutil.copy2(root/'output/video/archive-content.json', out/'archive-content.json')
 
     # A readable extraction remains available independently of the website.
-    lines = ['# 웅상 아카이빙 작품 원문', '', '출처: 아카이빙작품_출력.pdf. 페이지별 제목·크리에이터·전후 설명·장소·촬영일을 화면 판독하여 옮겼습니다. 원문에 없는 월·일은 보완하지 않았습니다.', '']
+    lines = ['# 웅상 아카이빙 작품 원문', '', '출처: 아카이빙작품_출력.pdf. 페이지별 제목·크리에이터·전후 설명·장소·촬영일을 화면 판독하여 옮겼습니다. 원문에 없는 월·일은 보완하지 않았습니다. 크리에이터 이름과 역할은 담당자의 확인 내용을 반영했습니다. 크리에이터는 사진을 수집하고 이야기를 구성한 담당자입니다.', '']
     for work in content['works']:
         lines += [f"## {work['page']:02d} · {work['creator']}", '', f"### {work['title']}", '']
         for key,label in [('before','전'),('after','후')]:
